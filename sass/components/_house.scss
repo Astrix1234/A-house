@@ -1,0 +1,299 @@
+.container {
+  position: relative;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 360px;
+}
+.house {
+  position: absolute;
+  width: 360px;
+  height: 500px;
+  translate: 0 -45px;
+  background-image: linear-gradient(
+      to top,
+      rgb(121, 121, 255),
+      rgb(214, 214, 253)
+    ),
+    linear-gradient(to bottom, rgb(9, 87, 53) 20%, rgb(170, 202, 189));
+  background-size: 100% 50%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: top, 0 50%;
+  &__first-wall {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    translate: 90px 90px;
+    transform: skewY(135deg);
+    background-image: linear-gradient(
+      to right,
+      rgb(255, 224, 186),
+      rgb(184, 155, 119)
+    );
+  }
+  &__window1 {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    translate: 100% 100%;
+    box-shadow: inset -4px -6px 0 0 rgb(181, 156, 126);
+    z-index: 5;
+    background-image: linear-gradient(
+        to bottom,
+        rgb(121, 121, 255) 20%,
+        rgb(214, 214, 253)
+      ),
+      linear-gradient(to bottom, rgb(121, 121, 255) 20%, rgb(214, 214, 253));
+    background-size: 11.5px 21px;
+    background-repeat: no-repeat;
+    background-position: 0px 0px, 13px 0px;
+  }
+  &__second-wall {
+    display: flex;
+    justify-content: space-evenly;
+    width: 180px;
+    height: 90px;
+    background-image: linear-gradient(to left, bisque, rgb(196, 168, 134));
+    position: absolute;
+    translate: -45px 45px;
+    transform: skewY(45deg);
+  }
+  &__window2 {
+    @extend .house__window1;
+    translate: 0% 100%;
+    box-shadow: inset 4px -6px 0 0 rgb(144, 121, 94);
+    background-position: 5.5px 0px, 18.5px 0px;
+  }
+  &__door {
+    width: 20px;
+    height: 60px;
+    background-color: rgb(99, 54, 30);
+    translate: 0% 50%;
+    border: 3px solid rgb(161, 84, 43);
+    border-top: 5px solid rgb(161, 84, 43);
+    box-shadow: inset 4px -5px 0 0 rgb(88, 37, 10);
+    z-index: 5;
+    &--open-close {
+      background-color: rgb(201, 127, 87);
+      border: 2px solid rgb(161, 84, 43);
+      z-index: 10;
+      position: absolute;
+      animation: doorOpenClose 2000ms ease-in-out infinite alternate both;
+    }
+  }
+  &__window3 {
+    @extend .house__window2;
+    translate: 0% 100%;
+    box-shadow: inset 4px -6px 0 0 rgb(181, 156, 126);
+  }
+  &__third-wall {
+    width: 0;
+    height: 0;
+    border-right: 117px solid rgb(161, 84, 43);
+    border-bottom: 49px solid transparent;
+    rotate: -67.5deg;
+    position: absolute;
+    translate: 90px 45px;
+  }
+  &__second-roof {
+    height: 128px;
+    width: 5px;
+    background-color: rgb(99, 54, 30);
+    position: absolute;
+    rotate: 22.5deg;
+    translate: 67.5px 30px;
+  }
+  &__third-roof {
+    height: 49px;
+    width: 11.5px;
+    background-color: rgb(99, 54, 30);
+    position: absolute;
+    rotate: -67.5deg;
+    translate: 114.5px -13.5px;
+    border-left: 1px solid rgb(70, 38, 21);
+  }
+  &__first-roof {
+    height: 118px;
+    width: 255px;
+    background-image: linear-gradient(
+      to left,
+      rgb(184, 63, 63),
+      rgb(114, 37, 37)
+    );
+    position: absolute;
+    translate: -25px -61px;
+    transform: skewX(202.5deg);
+    rotate: 45deg;
+    border-bottom: 1px solid rgb(99, 54, 30);
+    border-top: 2px solid rgb(80, 29, 29);
+    z-index: 10;
+  }
+  &__fourth-roof {
+    height: 20.5px;
+    width: 254.5px;
+    background-image: linear-gradient(
+      to left,
+      rgb(126, 50, 50),
+      rgb(78, 30, 30)
+    );
+    position: absolute;
+    translate: 24px -109.5px;
+    transform: skewX(-67.5deg);
+    rotate: 45deg;
+    border-bottom: 1px solid rgb(80, 29, 29);
+    z-index: 10;
+  }
+  &__chimney-first-wall {
+    @extend .house__first-wall;
+    width: 15px;
+    height: 15px;
+    translate: -30px -100px;
+    z-index: 11;
+  }
+  &__chimney-second-wall {
+    @extend .house__second-wall;
+    width: 15px;
+    height: 15px;
+    translate: -45px -100px;
+    z-index: 11;
+  }
+  &__chimney-roof {
+    position: absolute;
+    width: 21.1px;
+    height: 21.1px;
+    rotate: 45deg;
+    translate: -37.3px -114.7px;
+    border: 3px solid rgb(161, 84, 43);
+    box-shadow: inset 10px 10px 0 0 rgb(88, 37, 10);
+    background-color: rgb(52, 24, 9);
+    z-index: 11;
+  }
+  &__smoke {
+    position: absolute;
+    translate: -28px -140px;
+    animation: moveWholeSmoke 6000ms ease-in-out infinite normal both;
+    z-index: 12;
+  }
+  &__smoke3 {
+    width: 30px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+    filter: blur(4px);
+  }
+  &__smoke2 {
+    width: 40px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+    translate: -5px -3px;
+    filter: blur(6px);
+  }
+  &__smoke1 {
+    width: 50px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+    translate: -10px -6px;
+    filter: blur(8px);
+  }
+  &__clouds {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    animation: moveClouds 20000ms ease-in-out infinite normal both;
+    gap: 20px;
+  }
+  &__clouds1 {
+    width: 50px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: white;
+    translate: -0px -10px;
+    filter: blur(7px);
+    opacity: 0.5;
+  }
+  &__clouds2 {
+    width: 90px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: white;
+    translate: -0px 10px;
+    filter: blur(8px);
+    opacity: 0.6;
+  }
+  &__clouds3 {
+    width: 120px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: white;
+    translate: -0px -40px;
+    filter: blur(8px);
+    opacity: 0.5;
+  }
+  &__clouds4 {
+    width: 80px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: white;
+    translate: 0px 20px;
+    filter: blur(6px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes doorOpenClose {
+  0% {
+    width: 20px;
+    translate: -225% 100%;
+    transform: skewY(45deg);
+    border-top: 3px solid rgb(161, 84, 43);
+    box-shadow: inset 1px -1px 0 0 rgb(88, 37, 10);
+  }
+  20% {
+    width: 20px;
+    translate: -225% 100%;
+    transform: skewY(45deg);
+    border-top: 3px solid rgb(161, 84, 43);
+    box-shadow: inset 1px -1px 0 0 rgb(88, 37, 10);
+  }
+  90% {
+    translate: -105% 117%;
+  }
+  100% {
+    width: 50px;
+    translate: -105% 117%;
+    transform: skewY(0deg) rotateY(-45deg);
+    border-top: 2px solid rgb(161, 84, 43);
+    box-shadow: inset 0px 0px 0 0 rgb(88, 37, 10);
+  }
+}
+@keyframes moveWholeSmoke {
+  0% {
+    scale: 0;
+    opacity: 0;
+    translate: -40px -110px;
+  }
+  60% {
+    scale: 1;
+    opacity: 1;
+    translate: -28px -140px;
+  }
+  100% {
+    scale: 2;
+    opacity: 0;
+    translate: -28px -140px;
+  }
+}
+@keyframes moveClouds {
+  0% {
+    translate: -380px -220px;
+  }
+
+  100% {
+    translate: 390px -220px;
+  }
+}
